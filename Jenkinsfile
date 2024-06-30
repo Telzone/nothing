@@ -1,12 +1,12 @@
 pipeline {
     agent any 
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('iccp-dockerhub')
+    DOCKERHUB_CREDENTIALS = credentials('benzone')
     }
     stages { 
         stage('SCM Checkout') {
             steps{
-            git 'https://github.com/iccpnorthindia/jenkinproject2024.git'
+            git 'https://github.com/Telzone/kops.git'
             }
         }
 
@@ -17,7 +17,7 @@ pipeline {
         }
         stage('login to dockerhub') {
             steps{
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-Abhishek@123'
             }
         }
         stage('push image') {
@@ -31,4 +31,4 @@ post {
             sh 'docker logout'
         }
     }
-}
+
